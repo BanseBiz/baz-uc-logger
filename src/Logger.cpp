@@ -35,9 +35,9 @@ void Logger::debug(const char* tag, const char* msg, ...) {
     va_list vl;
     va_start(vl,msg);
     char message[LOGGER_BUFFER];
-    vsprintf(message,msg,vl);
+    vsnprintf(message, LOGGER_BUFFER, msg, vl);
     char buffer[LOGGER_BUFFER];
-    sprintf(buffer,"%012lu-%s: %s: %s\n",millis(),"DEBUG",tag,message);
+    snprintf(buffer, LOGGER_BUFFER, "%012lu-%s: %s: %s\n",millis(),"DEBUG",tag,message);
     va_end(vl);
     xSemaphoreTake(_mtx, portMAX_DELAY);
     _log.push_back(std::string(buffer));
@@ -59,9 +59,9 @@ void Logger::info(const char* tag, const char* msg, ...) {
     va_list vl;
     va_start(vl,msg);
     char message[LOGGER_BUFFER];
-    vsprintf(message,msg,vl);
+    vsnprintf(message, LOGGER_BUFFER, msg, vl);
     char buffer[LOGGER_BUFFER];
-    sprintf(buffer,"%012lu-%s: %s: %s\n",millis(),"_INFO",tag,message);
+    snprintf(buffer, LOGGER_BUFFER, "%012lu-%s: %s: %s\n",millis(),"_INFO",tag,message);
     va_end(vl);
     xSemaphoreTake(_mtx, portMAX_DELAY);
     _log.push_back(std::string(buffer));
@@ -74,9 +74,9 @@ void Logger::warn(const char* tag, const char* msg, ...) {
     va_list vl;
     va_start(vl,msg);
     char message[LOGGER_BUFFER];
-    vsprintf(message,msg,vl);
+    vsnprintf(message, LOGGER_BUFFER, msg, vl);
     char buffer[LOGGER_BUFFER];
-    sprintf(buffer,"%012lu-%s: %s: %s\n",millis(),"_WARN",tag,message);
+    snprintf(buffer, LOGGER_BUFFER, "%012lu-%s: %s: %s\n",millis(),"_WARN",tag,message);
     va_end(vl);
     xSemaphoreTake(_mtx, portMAX_DELAY);
     _log.push_back(std::string(buffer));
@@ -89,9 +89,9 @@ void Logger::error(const char* tag, const char* msg, ...) {
     va_list vl;
     va_start(vl,msg);
     char message[LOGGER_BUFFER];
-    vsprintf(message,msg,vl);
+    vsnprintf(message, LOGGER_BUFFER, msg, vl);
     char buffer[LOGGER_BUFFER];
-    sprintf(buffer,"%012lu-%s: %s: %s\n",millis(),"ERROR",tag,message);
+    snprintf(buffer, LOGGER_BUFFER, "%012lu-%s: %s: %s\n",millis(),"ERROR",tag,message);
     va_end(vl);
     xSemaphoreTake(_mtx, portMAX_DELAY);
     _log.push_back(std::string(buffer));

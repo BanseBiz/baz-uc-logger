@@ -1,7 +1,7 @@
 #pragma once
 
 #define LOGGER_BUFFER 1024
-#define LOGGER_LEVEL 1
+#define LOGGER_LEVEL 3
 
 #include <Client.h>
 #include <map>
