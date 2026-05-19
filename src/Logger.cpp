@@ -29,7 +29,7 @@ void Logger::init() {
 
 void Logger::debug(const char* tag, const char* msg, ...) {
     #if !defined LOGGER_LEVEL || LOGGER_LEVEL >= LOGGER_LEVEL_DEBUG
-    if (tag == "GPS") {
+    if (strcmp(tag, "GPS") == 0) {
         return;
     }
     va_list vl;
@@ -47,7 +47,7 @@ void Logger::debug(const char* tag, const char* msg, ...) {
 
 void Logger::debug(const char* tag, std::string msg) {
     #if !defined LOGGER_LEVEL || LOGGER_LEVEL >= LOGGER_LEVEL_DEBUG
-    if (tag == "GPS") {
+    if (strcmp(tag, "GPS") == 0) {
         return;
     }
     debug(tag,msg.c_str());
